@@ -23,4 +23,7 @@ public class User {
     private String level;
     private LocalDateTime registeredAt;
     private LocalDateTime lastActivityAt;
+
+    @Column(name = "sentence_game_amount", nullable = false)
+    private Integer sentenceGameAmount = 5;
 }
