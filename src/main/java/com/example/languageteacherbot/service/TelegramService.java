@@ -366,7 +366,8 @@ public class TelegramService {
             return;
         }
 
-        List<UserWord> allUserWords = userWordRepository.findByUserChatId(chatId);
+        List<UserWord> allUserWords = userWordRepository.findByUserChatIdWithWord(chatId);
+        
         if (allUserWords.isEmpty()) {
             String nativeLang = userOpt.get().getNativeLanguage();
             String message = nativeLang.equals("ru") ? "❌ Ты ещё не отметил ни одного слова как 'не знаю'." : "❌ 你还没有标记任何单词为\"不认识\"。";
@@ -1938,7 +1939,8 @@ public class TelegramService {
             return;
         }
 
-        List<UserFavoriteWord> allUserFavorites = userFavoriteWordRepository.findByUserChatId(chatId);
+        List<UserFavoriteWord> allUserFavorites = userFavoriteWordRepository.findByUserChatIdWithWord(chatId);
+        
         if (allUserFavorites.isEmpty()) {
             String nativeLang = userOpt.get().getNativeLanguage();
             String message = nativeLang.equals("ru") ? "⭐ В избранном пока нет слов." : "⭐ 收藏中还没有单词。";
